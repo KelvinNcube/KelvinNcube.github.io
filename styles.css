@@ -1,0 +1,52 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+#employee-card {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.employee-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    padding: 20px;
+    width: 300px; /* Fixed width for cards */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transition for hover effects */
+}
+
+    .employee-card h3 {
+        margin: 0;
+        color: #007BFF; /* Primary color for names */
+    }
+
+    .employee-card a {
+        color: #007BFF; /* Link color */
+        text-decoration: none;
+        transition: color 0.3s; /* Transition for link hover effects */
+    }
+
+        .employee-card a:hover {
+            color: #0056b3; /* Darker shade on hover */
+        }
+
+    .employee-card:hover {
+        transform: translateY(-5px); /* Lift effect on hover */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+    }
+
+.placeholder {
+    text-align: center;
+    color: #999;
+}
