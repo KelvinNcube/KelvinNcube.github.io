@@ -6,6 +6,37 @@ function getEmployeeNameFromURL() {
 
 // Function to load employee data from JSON
 async function loadEmployeeData() {
+
+    // Inside the loadEmployeeData function
+    if (employee) {
+        // Create an employee card for the matching employee
+        let card = document.createElement('div');
+        card.classList.add('employee-card');
+
+        // Create label for Origin Cranes
+        let label = document.createElement('h2');
+        label.textContent = 'Origin Cranes';
+        label.classList.add('label'); // Add a class for styling
+        card.appendChild(label); // Add label to card
+
+        // Employee name
+        let name = document.createElement('h3');
+        name.textContent = employee.name;
+        card.appendChild(name);
+
+        // Employee links
+        employee.links.forEach(link => {
+            let linkElement = document.createElement('a');
+            linkElement.href = link.url;
+            linkElement.textContent = link.label;
+            linkElement.classList.add('link-button'); // Add this class
+            linkElement.target = '_blank'; // Open in new tab
+            card.appendChild(linkElement);
+        });
+
+        container.appendChild(card); // Add card to container
+    }
+
     const employeeName = getEmployeeNameFromURL(); // e.g., "john-doe"
 
     if (!employeeName) {
@@ -40,8 +71,8 @@ async function loadEmployeeData() {
                 let linkElement = document.createElement('a');
                 linkElement.href = link.url;
                 linkElement.textContent = link.label;
+                linkElement.classList.add('link-button'); // Add this class
                 linkElement.target = '_blank'; // Open in new tab
-                card.appendChild(document.createElement('br')); // Line break
                 card.appendChild(linkElement);
             });
 
