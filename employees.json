@@ -1,0 +1,68 @@
+﻿[
+    {
+        "name": "John Doe",
+        "links": [
+            {
+                "label": "LinkedIn",
+                "url": "https://linkedin.com/in/johndoe"
+            },
+            {
+                "label": "Support Ticket",
+                "url": "https://company.com/tickets/john_doe"
+            }
+        ]
+    },
+    {
+        "name": "Jane Smith",
+        "links": [
+            {
+                "label": "LinkedIn",
+                "url": "https://linkedin.com/in/janesmith"
+            },
+            {
+                "label": "Portfolio",
+                "url": "https://janesmith.com"
+            }
+        ]
+    },
+    {
+        "name": "Michael Brown",
+        "links": [
+            {
+                "label": "GitHub",
+                "url": "https://github.com/michaelbrown"
+            },
+            {
+                "label": "Support Ticket",
+                "url": "https://company.com/tickets/michael_brown"
+            }
+        ]
+    },
+    {
+        "name": "Emily Johnson",
+        "links": [
+            {
+                "label": "LinkedIn",
+                "url": "https://linkedin.com/in/emilyjohnson"
+            },
+            {
+                "label": "Blog",
+                "url": "https://emilyjohnsonblog.com"
+            }
+        ]
+    },
+    {
+        "name": "David Lee",
+        "links": [
+            {
+                "label": "Twitter",
+                "url": "https://twitter.com/davidlee"
+            },
+            {
+                "label": "Support Ticket",
+                "url": "https://company.com/tickets/david_lee"
+            }
+        ]
+    }
+]
+

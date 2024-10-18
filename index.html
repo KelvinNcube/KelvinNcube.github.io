@@ -3,103 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Directory</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Employee Profile</title>
     <style>
-        body {
-            background-color: #f8f9fa;
-            font-family: Arial, sans-serif;
-        }
-
-        .card-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
         .employee-card {
+            border: 1px solid #ccc;
+            padding: 10px;
             margin: 10px;
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px solid #e0e0e0;
-            background-color: white;
-            width: 300px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            width: 250px;
         }
-
-            .employee-card h3 {
-                margin-bottom: 20px;
-            }
-
-            .employee-card a {
-                display: block;
-                margin: 5px 0;
-                color: #007bff;
-                text-decoration: none;
-            }
-
-                .employee-card a:hover {
-                    text-decoration: underline;
-                }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1 class="text-center my-4">Employee Directory</h1>
-        <div class="card-container" id="employee-cards">
-            <!-- Employee cards will be dynamically added here -->
-        </div>
-    </div>
+    <h1>Employee Profile</h1>
+    <div id="employee-card"></div>
 
-    <script>function slugify(text) {
-            return text.toString().toLowerCase().trim().replace(/\s+/g, '-');
-        }
-
-        // Function to add an employee card
-        function addEmployeeCard(name, links) {
-            const cardContainer = document.getElementById('employee-cards');
-            const card = document.createElement('div');
-            card.className = 'employee-card';
-
-            // Add employee name with link to individual page
-            const nameElement = document.createElement('h3');
-            const employeeUrl = 'employee/' + slugify(name) + '.html';
-            nameElement.innerHTML = `<a href="${employeeUrl}">${name}</a>`;
-            card.appendChild(nameElement);
-
-            // Add general links (optional, like LinkedIn)
-            links.forEach(link => {
-                const linkElement = document.createElement('a');
-                linkElement.href = link.url;
-                linkElement.target = '_blank';
-                linkElement.textContent = link.label;
-                card.appendChild(linkElement);
-            });
-
-            cardContainer.appendChild(card);
-        }
-
-        // Simulating POST request data
-        const employeeData = [
-            {
-                name: 'John Doe',
-                links: [
-                    { label: 'LinkedIn', url: 'https://www.linkedin.com/in/johndoe' }
-                ]
-            },
-            {
-                name: 'Jane Smith',
-                links: [
-                    { label: 'LinkedIn', url: 'https://www.linkedin.com/in/janesmith' }
-                ]
-            }
-        ];
-
-        // Simulate data reception
-        employeeData.forEach(employee => {
-            addEmployeeCard(employee.name, employee.links);
-        });</script>
+    <script src="script.js"></script>
 </body>
 </html>
