@@ -1,4 +1,4 @@
-﻿// Function to get employee name from the query string
+// Function to get employee name from the query string
 function getEmployeeNameFromURL() {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get('employee'); // Extract the "employee" query parameter
@@ -26,13 +26,14 @@ async function loadEmployeeData() {
 
         // Employee links
         employee.links.forEach(link => {
-            let linkElement = document.createElement('a');
-            linkElement.href = link.url;
-            linkElement.textContent = link.label;
-            linkElement.classList.add('link-button'); // Add this class
-            linkElement.target = '_blank'; // Open in new tab
-            card.appendChild(linkElement);
-        });
+    let linkElement = document.createElement('a');
+    linkElement.href = link.url;
+    linkElement.textContent = link.label;
+    linkElement.classList.add('link-button'); // Add this class
+    linkElement.target = '_blank'; // Open in new tab
+    card.appendChild(linkElement);
+});
+
 
         container.appendChild(card); // Add card to container
     }

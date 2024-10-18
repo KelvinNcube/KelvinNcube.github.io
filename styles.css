@@ -1,4 +1,4 @@
-﻿body {
+body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
@@ -17,34 +17,46 @@ h1 {
 }
 
 .employee-card {
-    background-color: #fff;
+    background-image: url('https://your-image-url.com/orange-crane.jpg'); /* Replace with the actual image URL */
+    background-size: cover; /* Cover the entire card */
+    background-position: center; /* Center the image */
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     margin: 15px;
     padding: 20px;
     width: 300px; /* Fixed width for cards */
     transition: transform 0.3s, box-shadow 0.3s; /* Transition for hover effects */
+    color: white; /* Text color */
 }
 
-    .employee-card h3 {
-        margin: 0;
-        color: #007BFF; /* Primary color for names */
-    }
+.employee-card h3 {
+    margin: 0;
+    color: #FFA500; /* Orange color for names */
+}
 
-    .employee-card a {
-        color: #007BFF; /* Link color */
-        text-decoration: none;
-        transition: color 0.3s; /* Transition for link hover effects */
-    }
+.link-button {
+    display: inline-block;
+    background-color: white; /* White background for buttons */
+    color: #FFA500; /* Orange text color */
+    border: none;
+    border-radius: 50%; /* Circular shape */
+    padding: 10px 15px; /* Padding for buttons */
+    text-align: center;
+    text-decoration: none; /* Remove underline */
+    margin: 5px; /* Space between buttons */
+    transition: background-color 0.3s, color 0.3s; /* Transition for hover effects */
+    font-weight: bold; /* Make text bold */
+}
 
-        .employee-card a:hover {
-            color: #0056b3; /* Darker shade on hover */
-        }
+.link-button:hover {
+    background-color: #FFA500; /* Change background color on hover */
+    color: white; /* Change text color on hover */
+}
 
-    .employee-card:hover {
-        transform: translateY(-5px); /* Lift effect on hover */
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
-    }
+.employee-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+}
 
 .placeholder {
     text-align: center;
