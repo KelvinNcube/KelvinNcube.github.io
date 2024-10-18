@@ -6,40 +6,8 @@ function getEmployeeNameFromURL() {
 
 // Function to load employee data from JSON
 async function loadEmployeeData() {
-
-    // Inside the loadEmployeeData function
-    if (employee) {
-        // Create an employee card for the matching employee
-        let card = document.createElement('div');
-        card.classList.add('employee-card');
-
-        // Create label for Origin Cranes
-        let label = document.createElement('h2');
-        label.textContent = 'Origin Cranes';
-        label.classList.add('label'); // Add a class for styling
-        card.appendChild(label); // Add label to card
-
-        // Employee name
-        let name = document.createElement('h3');
-        name.textContent = employee.name;
-        card.appendChild(name);
-
-        // Employee links
-        employee.links.forEach(link => {
-    let linkElement = document.createElement('a');
-    linkElement.href = link.url;
-    linkElement.textContent = link.label;
-    linkElement.classList.add('link-button'); // Add this class
-    linkElement.target = '_blank'; // Open in new tab
-    card.appendChild(linkElement);
-});
-
-
-        container.appendChild(card); // Add card to container
-    }
-
     const employeeName = getEmployeeNameFromURL(); // e.g., "john-doe"
-
+    
     if (!employeeName) {
         document.getElementById('employee-card').innerHTML = '<p>No employee specified</p>';
         return;
@@ -50,7 +18,7 @@ async function loadEmployeeData() {
         const employees = await response.json();
 
         // Find the employee by comparing URL name to JSON employee names, converting them to URL-friendly format
-        const employee = employees.find(emp =>
+        const employee = employees.find(emp => 
             emp.name.toLowerCase().replace(/\s+/g, '-') === employeeName
         );
 
@@ -61,6 +29,12 @@ async function loadEmployeeData() {
             // Create an employee card for the matching employee
             let card = document.createElement('div');
             card.classList.add('employee-card');
+
+            // Create label for Origin Cranes
+            let label = document.createElement('h2');
+            label.textContent = 'Origin Cranes';
+            label.classList.add('label'); // Add a class for styling
+            card.appendChild(label); // Add label to card
 
             // Employee name
             let name = document.createElement('h3');
