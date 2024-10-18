@@ -4,16 +4,20 @@ function getEmployeeNameFromURL() {
     return urlParams.get('employee'); // Extract the "employee" query parameter
 }
 
-
 // Function to load employee data from JSON
 async function loadEmployeeData() {
     const employeeName = getEmployeeNameFromURL(); // e.g., "john-doe"
 
+    if (!employeeName) {
+        document.getElementById('employee-card').innerHTML = '<p>No employee specified</p>';
+        return;
+    }
+
     try {
-        const response = await fetch('/employees.json');
+        const response = await fetch('./employees.json'); // Ensure the correct path
         const employees = await response.json();
 
-        // Find the employee by name (assuming the employee names are unique)
+        // Find the employee by comparing URL name to JSON employee names, converting them to URL-friendly format
         const employee = employees.find(emp =>
             emp.name.toLowerCase().replace(/\s+/g, '-') === employeeName
         );
