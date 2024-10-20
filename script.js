@@ -25,6 +25,15 @@ async function loadEmployeeData() {
             let card = document.createElement('div');
             card.classList.add('employee-card');
 
+            // Static logo already added in HTML
+
+            // Dynamically add logo above employee name
+            let dynamicLogo = document.createElement('img');
+            dynamicLogo.src = 'https://origincranes.com.au/wp-content/uploads/2023/03/origin-logo.png';
+            dynamicLogo.alt = 'Origin Cranes Logo';
+            dynamicLogo.classList.add('logo'); // Add a class for styling if needed
+            card.appendChild(dynamicLogo); // Add logo to card
+
             // Employee name
             let name = document.createElement('h3');
             name.textContent = employee.name;
