@@ -1,13 +1,13 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Poppins', sans-serif;
+    background-color: #1a1a1a; /* Darker background */
     margin: 0;
     padding: 20px;
 }
 
 h1 {
     text-align: center;
-    color: #333;
+    color: #fff; /* White color for headings */
 }
 
 #employee-card {
@@ -18,47 +18,49 @@ h1 {
 
 .employee-card {
     background-image: url('https://your-image-url.com/orange-crane.jpg'); /* Replace with the actual image URL */
-    background-size: cover; /* Cover the entire card */
-    background-position: center; /* Center the image */
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin: 15px;
-    padding: 20px;
-    width: 300px; /* Fixed width for cards */
-    transition: transform 0.3s, box-shadow 0.3s; /* Transition for hover effects */
-    color: white; /* Text color */
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    margin: 20px;
+    padding: 25px;
+    width: 320px; /* Slightly larger width */
+    transition: transform 0.3s, box-shadow 0.3s;
+    color: white;
+    backdrop-filter: blur(10px); /* Slight blur for a more elegant look */
 }
 
-.employee-card h3 {
-    margin: 0;
-    color: #FFA500; /* Orange color for names */
-}
+    .employee-card h3 {
+        margin: 0;
+        color: #FFA500; /* Orange color for names */
+    }
 
 .link-button {
     display: inline-block;
-    background-color: white; /* White background for buttons */
+    background-color: transparent; /* Transparent background for buttons */
     color: #FFA500; /* Orange text color */
-    border: none;
+    border: 2px solid #FFA500; /* Border for buttons */
     border-radius: 50%; /* Circular shape */
-    padding: 10px 15px; /* Padding for buttons */
+    padding: 10px 15px;
     text-align: center;
-    text-decoration: none; /* Remove underline */
-    margin: 5px; /* Space between buttons */
-    transition: background-color 0.3s, color 0.3s; /* Transition for hover effects */
-    font-weight: bold; /* Make text bold */
+    text-decoration: none;
+    margin: 5px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Transition for hover effects */
+    font-weight: bold;
 }
 
-.link-button:hover {
-    background-color: #FFA500; /* Change background color on hover */
-    color: white; /* Change text color on hover */
-}
+    .link-button:hover {
+        background-color: #FFA500; /* Change background color on hover */
+        color: #fff; /* Change text color on hover */
+        border-color: #fff; /* Change border color on hover */
+    }
 
 .employee-card:hover {
-    transform: translateY(-5px); /* Lift effect on hover */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* More pronounced shadow */
 }
 
 .placeholder {
     text-align: center;
-    color: #999;
+    color: #bbb; /* Light gray for placeholders */
 }
