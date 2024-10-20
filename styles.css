@@ -75,3 +75,8 @@ h1 {
     text-align: center;
     color: #bbb; /* Light gray for placeholders */
 }
+
+.logo {
+    width: 150px; /* Adjust size as needed */
+    margin-bottom: 20px; /* Space below the logo */
+}

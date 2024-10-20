@@ -25,12 +25,6 @@ async function loadEmployeeData() {
             let card = document.createElement('div');
             card.classList.add('employee-card');
 
-            // Create label for Origin Cranes
-            let label = document.createElement('h2');
-            label.textContent = 'Origin Cranes';
-            label.classList.add('label'); // Add a class for styling
-            card.appendChild(label); // Add label to card
-
             // Employee name
             let name = document.createElement('h3');
             name.textContent = employee.name;
