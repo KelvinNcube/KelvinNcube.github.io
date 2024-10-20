@@ -28,17 +28,16 @@ h1 {
     transition: transform 0.3s, box-shadow 0.3s;
     color: white;
     backdrop-filter: blur(10px); /* Slight blur for a more elegant look */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align items */
 }
 
     .employee-card h3 {
         margin: 0;
         color: #FFA500; /* Orange color for names */
+        margin-bottom: 15px; /* Space below the name */
     }
-
-.buttons-container {
-    display: flex;
-    flex-direction: column; /* Stack buttons vertically */
-}
 
 .link-button {
     background-color: transparent; /* Transparent background for buttons */
@@ -51,6 +50,7 @@ h1 {
     margin: 5px 0; /* Space between buttons */
     transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Transition for hover effects */
     font-weight: bold;
+    width: 80%; /* Make buttons wider */
 }
 
     .link-button:hover {
