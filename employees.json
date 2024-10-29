@@ -82,6 +82,10 @@
       {
         "label": "High Risk Ticket",
         "url": "https://origin-cranes.docuware.cloud:443/DocuWare/Platform/WebClient/Integration?&ep=3G6bdaqoJgHNuie_QNzOfRorZ2bhnoLNmzdGrEiJ6dw3VrQCw1aimBRsRzHfnY_sZdCThjxDQCJtUmNedS3mCnByJI_66fXiuZBhecz63JC0G6-vd22l5W2sl87ij08gdjkJfU0nGRT0VjZE8SLWTg2"
+      },
+      {
+        "label": "Verification of Competency VOC",
+        "url": "https://origin-cranes.docuware.cloud:443/DocuWare/Platform/WebClient/Integration?&ep=3G6bdaqoJgHNuie_QNzOfRorZ2bhnoLNmzdGrEiJ6dw3VrQCw1aimBRsRzHfnY_sZdCThjxDQCJtUmNedS3mCnByJI_66fXiuZBhecz63JC0G6-vd22l5W2sl87ij08gbCFBd1GzJj5OeZHdDWUDjg2"
       }
     ]
   }
