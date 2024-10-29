@@ -35,7 +35,7 @@ h1 {
 
     .employee-card h3 {
         margin: 0;
-        color: #FFA500; /* Orange color for names */
+        color: #800000; /* Orange color for names */
         margin-bottom: 15px; /* Space below the name */
     }
 
@@ -48,8 +48,8 @@ h1 {
 
 .link-button {
     background-color: transparent; /* Transparent background for buttons */
-    color: #FFA500; /* Orange text color */
-    border: 2px solid #FFA500; /* Border for buttons */
+    color: #800000; /* Orange text color */
+    border: 2px solid #800000; /* Border for buttons */
     border-radius: 50%; /* Circular shape */
     padding: 10px 15px;
     text-align: center;
