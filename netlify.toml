@@ -1,0 +1,5 @@
+[build]
+  functions = "netlify/functions"  # This should match the path where your functions are stored.
+
+[dev]
+  functions = "netlify/functions"  # This specifies where to look for functions during local development.

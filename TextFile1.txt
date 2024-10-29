@@ -1,0 +1,5 @@
+[build]
+  functions = "functions" # This specifies the directory for your functions
+
+[dev]
+  functions = "functions"  # This is where the functions are located during local development
