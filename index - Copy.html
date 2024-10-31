@@ -1,0 +1,295 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Profile</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS -->
+    <style>
+        /* Add any additional styles you may need here */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+            .close-button:hover,
+            .close-button:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+    </style>
+</head>
+<body>
+    <h1>Employee Profile</h1>
+    <div id="employee-card">
+        <div class="employee-card">
+            <img src="https://origincranes.com.au/wp-content/uploads/2023/03/origin-logo.png" alt="Origin Cranes Logo" class="logo">
+        </div>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="document-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div id="document-data"></div>
+        </div>
+    </div>
+
+    <!-- <script src="script.js"></script> -->
+    <script>
+        // Function to get employee name from the query string
+        function getEmployeeNameFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('employee'); // Extract the "employee" query parameter
+        }
+
+        // Function to load employee data
+        async function loadEmployeeData() {
+            const employeeName = getEmployeeNameFromURL(); // e.g., "john-doe"
+            if (!employeeName) {
+                document.getElementById('employee-card').innerHTML = '<p>No employee specified</p>';
+                return;
+            }
+            try {
+                // Fetch data from your Netlify function
+                const response = await fetch(`/.netlify/functions/docuware?employee=${employeeName}`);
+
+                // Check if the response is okay
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json(); // Expecting an array of document objects
+                const container = document.getElementById('employee-card');
+                container.innerHTML = ''; // Clear previous content
+
+                if (data && data.length > 0) {
+                    // Create a card for the employee
+                    let employeeCard = document.createElement('div');
+                    employeeCard.classList.add('employee-card');
+
+                    // Add logo to the employee card
+                    let dynamicLogo = document.createElement('img');
+                    dynamicLogo.src = 'https://origincranes.com.au/wp-content/uploads/2023/03/origin-logo.png';
+                    dynamicLogo.alt = 'Origin Cranes Logo';
+                    dynamicLogo.classList.add('logo');
+                    employeeCard.appendChild(dynamicLogo);
+
+                    // Add employee name at the top of the card
+                    let employeeNameElement = document.createElement('h2');
+                    employeeNameElement.textContent = capitalizeName(employeeName.replace(/-/g, ' ')); // Replace hyphens with spaces and capitalize
+                    employeeNameElement.classList.add('employee-name'); // Add a class for styling
+                    employeeCard.appendChild(employeeNameElement);
+
+                    // Create a container for the document links
+                    const buttonsContainer = document.createElement('div');
+                    buttonsContainer.classList.add('buttons-container');
+
+                    // Create a button for each document returned
+                    data.forEach(item => {
+                        let buttonElement = document.createElement('button');
+                        buttonElement.textContent = item.documentType || "Document"; // Set the button label to the document type
+                        buttonElement.classList.add('link-button'); // Add class for styling
+
+                        // Add an event listener to the button
+                        buttonElement.addEventListener('click', async () => {
+                            // Call the getSection function with the extracted DocID
+                            await getSection(item.docID); // Use item.docID to get the document ID
+
+                        });
+
+                        buttonsContainer.appendChild(buttonElement); // Add button to buttons container
+                    });
+
+                    employeeCard.appendChild(buttonsContainer); // Add buttons container to employee card
+                    container.appendChild(employeeCard); // Add employee card to the container
+                } else {
+                    container.innerHTML = `<p>No documents found for this employee.</p>`;
+                }
+            } catch (error) {
+                console.error('Error loading employee data:', error);
+                document.getElementById('employee-card').innerHTML = `<p>Error loading employee data: ${error.message}</p>`;
+            }
+        }
+
+        // Function to download a file from base64
+        function downloadB64(base64, type = 'application/octet-stream', name) {
+            fetch(`data:${type};base64,${base64}`).then(async res => {
+                let blob = await res.blob();
+                let blobUrl = URL.createObjectURL(blob);
+                let a = document.createElement('a');
+                a.href = blobUrl;
+                a.download = name;
+                a.click();
+                URL.revokeObjectURL(blobUrl); // Clean up
+            });
+        }
+
+        async function getSection(docID) {
+            console.log(docID);
+            let response;
+
+            // Fetch the section data
+            try {
+                response = await fetch('/.netlify/functions/getSection', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({ secID: docID }),
+                });
+
+                // Log the response
+                console.log(`Response from getSection API for DocID ${docID}:`, response);
+
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch section data: ${response.status} ${response.statusText}`);
+                }
+            } catch (error) {
+                console.error(error);
+                displayError(`Error fetching section for DocID ${docID}: ${error.message}`);
+                return; // Exit the function on error
+            }
+
+            const sectionData = await response.json();
+
+            // Log the section data
+            console.log('Section Data:', sectionData);
+
+            const b64String = sectionData.buffer; // Ensure this exists
+            const fileType = sectionData.fileType || 'application/pdf'; // Default to PDF if undefined
+            const fileName = sectionData.fileName || 'document.pdf'; // Default file name
+
+            // Log to check the data
+            console.log('Base64 String Length:', b64String.length);
+            console.log('File Type:', fileType);
+
+            // Clear previous content in the modal
+            const modalContent = document.getElementById('document-data');
+            modalContent.innerHTML = '';
+
+            // Create elements for download and viewing
+            const attachmentDiv = document.createElement('div');
+            const buttonDiv = document.createElement('div');
+            const viewButton = document.createElement('button');
+            const downloadButton = document.createElement('button');
+
+            viewButton.textContent = 'View Document';
+            downloadButton.textContent = 'Download Document';
+
+            // Add attributes for downloading
+            downloadButton.setAttribute('data-base64', b64String);
+            downloadButton.setAttribute('data-filetype', fileType);
+            downloadButton.setAttribute('data-filename', fileName);
+
+            // Download button event listener
+            downloadButton.addEventListener('click', (e) => {
+                const type = e.target.getAttribute('data-filetype');
+                const b64 = e.target.getAttribute('data-base64');
+                const name = e.target.getAttribute('data-filename');
+                downloadB64(b64, type, name);
+            });
+
+            // Append buttons to the button div
+            buttonDiv.appendChild(viewButton);
+            buttonDiv.appendChild(downloadButton);
+            attachmentDiv.appendChild(buttonDiv);
+            modalContent.appendChild(attachmentDiv); // Append the attachmentDiv
+
+            // Determine how to display the document
+            if (fileType.startsWith("image/")) {
+                const imageEl = document.createElement('img');
+                imageEl.src = `data:${fileType};base64,${b64String}`;
+                imageEl.style.width = '100%'; // Adjust size
+                modalContent.appendChild(imageEl);
+            } else if (fileType === "application/pdf") {
+                const pdfEl = document.createElement("iframe");
+                pdfEl.src = `data:${fileType};base64,${b64String}`;
+                pdfEl.style.width = '100%';
+                pdfEl.style.height = '500px';
+                pdfEl.style.border = 'none'; // Add border style to avoid default iframe borders
+                modalContent.appendChild(pdfEl);
+
+                // Log PDF details
+                console.log('PDF Element Created with Base64 String:', pdfEl.src);
+
+                // Optionally open the PDF in a new tab
+                viewButton.addEventListener('click', () => {
+                    const pdfUrl = `data:${fileType};base64,${b64String}`;
+                    console.log('Opening PDF in new tab:', pdfUrl);
+                    window.open(pdfUrl, '_blank');
+                });
+            } else {
+                console.error(`Unsupported file type: ${fileType}`);
+                displayError(`Unsupported file type: ${fileType}`);
+            }
+
+            // Show the modal
+            const modal = document.getElementById('document-modal');
+            modal.style.display = "block";
+
+            // Close button functionality
+            document.querySelector('.close-button').onclick = function () {
+                modal.style.display = "none";
+            };
+
+            // Close modal if user clicks outside of it
+            window.onclick = function (event) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            };
+        }
+
+        // Function to display errors to the user
+        function displayError(message) {
+            // You can customize this to display errors in your UI
+            console.error(message);
+            alert(message);  // For demonstration purposes, you can use a simple alert
+        }
+
+        // Function to display errors to the user
+        function displayError(message) {
+            // You can customize this to display errors in your UI
+            console.error(message);
+            alert(message);  // For demonstration purposes, you can use a simple alert
+        }
+
+        // Helper function to capitalize the first letter of each word
+        function capitalizeName(name) {
+            return name
+                .split(' ')
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(' ');
+        }
+
+        // Load employee data when the page is loaded
+        window.onload = loadEmployeeData;
+    </script>
+</body>
+</html>

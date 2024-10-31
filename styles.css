@@ -60,8 +60,70 @@ h1 {
     width: 80%;
 }
 
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #1a1a1a; /* Darker background */
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #fff; /* White color for headings */
+}
+
+#employee-card {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.employee-card {
+    background-image: url('https://your-image-url.com/orange-crane.jpg'); /* Replace with the actual image URL */
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    margin: 20px;
+    padding: 25px;
+    width: 320px; /* Slightly larger width */
+    transition: transform 0.3s, box-shadow 0.3s;
+    color: white;
+    backdrop-filter: blur(10px); /* Slight blur for a more elegant look */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align items */
+}
+
+    .employee-card h3 {
+        margin: 0;
+        color: #800000; /* Orange color for names */
+        margin-bottom: 15px; /* Space below the name */
+    }
+
+.buttons-container {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    width: 100%;
+    align-items: center; /* Center align buttons */
+}
+
+.link-button {
+    background-color: transparent; /* Transparent background for buttons */
+    color: #800000; /* Orange text color */
+    border: 2px solid #800000; /* Border for buttons */
+    border-radius: 50%; /* Circular shape */
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 0; /* Space between buttons */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Transition for hover effects */
+    font-weight: bold;
+    width: 80%;
+}
+
     .link-button:hover {
-        background-color: #FFA500; /* Change background color on hover */
+        background-color: #800000; /* Maroon background on hover */
         color: #fff; /* Change text color on hover */
         border-color: #fff; /* Change border color on hover */
     }
@@ -80,3 +142,119 @@ h1 {
     width: 150px; /* Adjust size as needed */
     margin-bottom: 20px; /* Space below the logo */
 }
+
+
+.employee-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* More pronounced shadow */
+}
+
+.placeholder {
+    text-align: center;
+    color: #bbb; /* Light gray for placeholders */
+}
+
+.logo {
+    width: 150px; /* Adjust size as needed */
+    margin-bottom: 20px; /* Space below the logo */
+}
+
+.employee-name {
+    color: #800000; /* Maroon color for employee names */
+    margin-bottom: 15px; /* Space below the name */
+}
+
+.modal {
+    display: none; /* Hide modal by default */
+    position: fixed;
+    z-index: 1001; /* Ensure it's above the loader */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+}
+
+
+/* Adjusted modal content to take up more space */
+.modal-content {
+    background-color: #f0f0f0; /* Light gray background for modal content */
+    margin: auto; /* Center the modal content */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%; /* Increased width to 90% of the screen */
+    height: 90%; /* Increased height to 90% of the screen */
+    border-radius: 8px; /* Optional: Add rounded corners for better aesthetics */
+    overflow: auto; /* Enable scrolling if content exceeds the height */
+}
+
+/* Optional: Add styles for the files section inside modal */
+.files {
+    background-color: #e0e0e0; /* Light gray background for files section */
+    padding: 10px; /* Optional: Add some padding for better spacing */
+    border-radius: 5px; /* Optional: Add rounded corners for better aesthetics */
+    max-height: 80vh; /* Set a maximum height for the files section */
+    overflow-y: auto; /* Enable scrolling if content exceeds max height */
+}
+
+
+/* Close button styling */
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+    .close-button:hover,
+    .close-button:focus {
+        color: black; /* Change color on hover/focus */
+        text-decoration: none;
+        cursor: pointer; /* Pointer cursor on hover */
+    }
+
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 1000; /* Ensure it's above other elements */
+}
+
+
+.loader-content {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: black;
+    cursor: pointer;
+}
+
+.innerDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: calc(100% - 50px); /* Adjust based on your layout */
+    overflow: auto;
+}
+
+img, iframe {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+

@@ -1,11 +1,10 @@
 const fetch = require('node-fetch');
 
 exports.handler = async (event) => {
-    const employeeName = 'john-doe'; //event.queryStringParameters.employee;
+    const employeeName = event.queryStringParameters.employee;
 
     // Replace these with your actual DocuWare credentials and server information
     const SERVER_URL = 'https://login-australia.docuware.cloud/0df62909-2188-406e-9a7f-9ac7540cf444';
-    const PLATFORM = 'DocuWare.Platform';
     const FILE_CABINET_ID = '8d8184f4-697b-4708-ad8e-9f59bab5ecd1';
     const SEARCH_DIALOG_ID = '0ea83d58-f76e-4a2e-8d9b-5c5b5d7a8839';
     const USERNAME = 'jurgendj.admin';
@@ -43,12 +42,16 @@ exports.handler = async (event) => {
                 {
                     DBName: 'FULL_NAME',
                     Value: [employeeName],
+                },
+                {
+                    DBName: 'STATUS',
+                    Value: ['Link'],
                 }
             ],
             Operation: 'And',
         };
 
-        const response = await fetch(`https://origin-cranes.docuware.cloud/DocuWare/Platform/FileCabinets/${FILE_CABINET_ID}/Query/DialogExpression?Count=10&Fields=DOCUMENT_TYPE,DOC_URL&SortOrder=DOCUMENT_TYPE+Asc&DialogId=${SEARCH_DIALOG_ID}`, {
+        const response = await fetch(`https://origin-cranes.docuware.cloud/DocuWare/Platform/FileCabinets/${FILE_CABINET_ID}/Query/DialogExpression?Count=10&Fields=DOCUMENT_TYPE,DOC_URL,DWDOCID&SortOrder=DOCUMENT_TYPE+Asc&DialogId=${SEARCH_DIALOG_ID}`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -74,6 +77,7 @@ exports.handler = async (event) => {
         let data;
         try {
             data = JSON.parse(responseText);
+            console.log("Parsed Data:", data);  // Log parsed data
         } catch (error) {
             console.error("Failed to parse JSON:", error);
             return {
@@ -82,19 +86,18 @@ exports.handler = async (event) => {
             };
         }
 
-        // Extract Document Types and Document URLs
+        // Extract Document Types and Document IDs
         const results = data.Items.map(item => {
             const documentTypeField = item.Fields.find(field => field.FieldName === "DOCUMENT_TYPE");
-            const docUrlField = item.Fields.find(field => field.FieldName === "DOC_URL");
-
-            const docUrl = docUrlField && !docUrlField.IsNull ? docUrlField.Item : null;
+            const docIDField = item.Fields.find(field => field.FieldName === "DWDOCID"); // Make sure this field exists in your API response
 
             return {
                 documentType: documentTypeField ? documentTypeField.Item : null,
-                docUrl: docUrl,
+                docID: docIDField ? docIDField.Item : null, // Save the DocID
             };
         });
 
+        // Return results in the expected format
         return {
             statusCode: 200,
             body: JSON.stringify(results),

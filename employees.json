@@ -69,7 +69,8 @@
     "links": [
       {
         "label": "Certificate of Completion",
-        "url": "https://origin-cranes.docuware.cloud:443/DocuWare/Platform/WebClient/Integration?&ep=3G6bdaqoJgHNuie_QNzOfRorZ2bhnoLNmzdGrEiJ6dw3VrQCw1aimBRsRzHfnY_sifNsxED3V9DQ02JSJeZxqOkT0DVtkPtXJzTASRLy-WcPCc3f24TKZHo2tRfbAxMrIihdLu-e3BqlDItk7bVK9kvbgzDGRbeZPM7E1w-36pc1"
+        "url": "https://origin-cranes.docuware.cloud:443/DocuWare/Platform/WebClient/Integration?&ep=3G6bdaqoJgHNuie_QNzOfRorZ2bhnoLNmzdGrEiJ6dw3VrQCw1aimBRsRzHfnY_sifNsxED3V9DQ02JSJeZxqOkT0DVtkPtXJzTASRLy-WcPCc3f24TKZHo2tRfbAxMrIihdLu-e3BqlDItk7bVK9kvbgzDGRbeZPM7E1w-36pc1",
+        "url": "https://origin-cranes.docuware.cloud:443/DocuWare/Platform/WebClient/Integration?&ep=ZmB4hFkuROYMD6gg35RTSXFfZDTn7HH8qUfNWUj-BpFX1Xwcmo0oAhARTNhFN7er8I5xjfTAtTr3dEG7Y0anpKnKq6i3-JAwbBLU0fKUPBcNMAJvJxP6TZkvWxmwh_S2xnEOb2dj1AGSvJv2wpDLOiKg0TLOLQ0OO9k2alEuGQYDN59d59raX3ygNpnOEWok"
       },
       {
         "label": "Drivers Licence",
@@ -85,7 +86,11 @@
       },
       {
         "label": "Verification of Competency VOC",
-        "url": "https://origin-cranes.docuware.cloud:443/DocuWare/Platform/WebClient/Integration?&ep=3G6bdaqoJgHNuie_QNzOfRorZ2bhnoLNmzdGrEiJ6dw3VrQCw1aimBRsRzHfnY_sZdCThjxDQCJtUmNedS3mCnByJI_66fXiuZBhecz63JC0G6-vd22l5W2sl87ij08gbCFBd1GzJj5OeZHdDWUDjg2"
+        "https": //origin-cranes.docuware.cloud:443/DocuWare/Platform/WebClient/Integration?&ep=sIbpxnXOApeEn1CKu9RWsUXE7rTYL8zi3z755DUKa47qjWuKrceyKmbvtQoPfy7TEeuwfz8gT0hXjTT5KbuNPadKSCkY21GnqhQeFc2SQJugag471bW8dZcD0Yo95PWS5s3iTC8QS2Hd6GxGuPQg4mPIdTEOR9BKvHhOTQlmerg
+
+        "https://origin-cranes.docuware.cloud:443/DocuWare/Platform/WebClient/Integration?&ep=sUbsQqhsDLC2AopPTnubDJtsUcN1o1yu52McUvqlz4qI8lFOZOmXuRVxmz9zT_rtrFA_lHSX1lMBwMMIk2Fr7ITl5jE0Z8p4o_cTIg169kea6013VHOjVrM2jdctQMZ1i4WByoSTb3VcgltMXpj3TKa64CCQcfBgj0A4OWVh1iQ,: null,
+        "url": "https://origin-cranes.docuware.cloud:443/DocuWare/Platform/WebClient/Integration?&ep&ep=JmA4Hq6kCW-4u1MxtElgjE4P7B-gI_MIfjuzX5a3216MEpNIXRwiW7HP9nMktdauOPt2gcaAaWroPlrdDWyx3BDTTpEfcV6753D5Epb9pP-3p_BAwEkSQ8Km2RmmbNBpvT0AN3qMUCxuXmwifwKYDKmI-9h6Gnwvq2OkDJ-bBp0",
+        "url": "https://origin-cranes.docuware.cloud:443/DocuWare/Platform/WebClient/Integration?&ep=3G6bdaqoJgHNuie_QNzOfRorZ2bhnoLNmzdGrEiJ6dw3VrQCw1aimBRsRzHfnY_sifNsxED3V9DQ02JSJeZxqOkT0DVtkPtXJzTASRLy-WcPCc3f24TKZHo2tRfbAxMrzkOo2KbdyspK3QtSrQ8Uh1CD3sryyDWWaoqgODQ79Ro1"
       }
     ]
   }
